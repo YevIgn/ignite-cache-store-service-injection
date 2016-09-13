@@ -30,12 +30,6 @@
             <artifactId>ignite-spring</artifactId>
             <version>${ignite.version}</version>
         </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.11</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>
@@ -48,12 +42,6 @@
                     <source>1.7</source>
                     <target>1.7</target>
                     <compilerVersion>1.7</compilerVersion>
-                    <encoding>UTF-8</encoding>
-                    <fork>true</fork>
-                    <debug>false</debug>
-                    <debuglevel>lines,vars,source</debuglevel>
-                    <meminitial>256</meminitial>
-                    <maxmem>512</maxmem>
                 </configuration>
             </plugin>
         </plugins>
