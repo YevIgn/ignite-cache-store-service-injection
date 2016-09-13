@@ -8,15 +8,8 @@
     <artifactId>ignite-cache-store-service-injection</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <repositories>
-        <repository>
-            <id>GridGain External Repository</id>
-            <url>http://www.gridgainsystems.com/nexus/content/repositories/external</url>
-        </repository>
-    </repositories>
-
     <properties>
-        <ignite.version>1.6.0</ignite.version>
+        <ignite.version>1.7.0</ignite.version>
     </properties>
 
     <dependencies>
