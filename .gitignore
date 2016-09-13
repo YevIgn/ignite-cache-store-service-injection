@@ -1,0 +1,5 @@
+
+.gitignore
+.idea/
+ignite-cache-store-service-injection.iml
+target/

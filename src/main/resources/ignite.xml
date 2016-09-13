@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="ignite.cfg" class="org.apache.ignite.configuration.IgniteConfiguration">
+        <property name="cacheConfiguration">
+           <list>
+               <bean id="testCache" class="org.apache.ignite.configuration.CacheConfiguration">
+                   <property name="name" value="testCache"/>
+                   <property name="writeThrough" value="true"/>
+                   <property name="nearConfiguration">
+                       <bean class="org.apache.ignite.configuration.NearCacheConfiguration"/>
+                   </property>
+                   <property name="cacheStoreFactory">
+                       <bean class="javax.cache.configuration.FactoryBuilder$ClassFactory">
+                           <constructor-arg type="java.lang.Class" value="example.ServicedCacheStore"/>
+                       </bean>
+                   </property>
+               </bean>
+           </list>
+        </property>
+
+        <property name="serviceConfiguration">
+            <list>
+                <bean id="cacheStoreBackend" class="org.apache.ignite.services.ServiceConfiguration">
+                    <property name="name" value="#{T(example.CacheStoreBackend).SERVICE_NAME}"/>
+                    <property name="maxPerNodeCount" value="1"/>
+                    <property name="service">
+                        <bean class="example.CacheStoreBackend"/>
+                    </property>
+                </bean>
+            </list>
+        </property>
+
+        <property name="discoverySpi">
+            <bean class="org.apache.ignite.spi.discovery.tcp.TcpDiscoverySpi">
+                <property name="ipFinder">
+                    <bean class="org.apache.ignite.spi.discovery.tcp.ipfinder.vm.TcpDiscoveryVmIpFinder">
+                        <property name="addresses">
+                            <list>
+                                <value>127.0.0.1:47500..47509</value>
+                            </list>
+                        </property>
+                    </bean>
+                </property>
+            </bean>
+        </property>
+    </bean>
+</beans>
