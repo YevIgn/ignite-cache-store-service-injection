@@ -12,9 +12,7 @@
                <bean id="testCache" class="org.apache.ignite.configuration.CacheConfiguration">
                    <property name="name" value="testCache"/>
                    <property name="writeThrough" value="true"/>
-                   <property name="nearConfiguration">
-                       <bean class="org.apache.ignite.configuration.NearCacheConfiguration"/>
-                   </property>
+                   <property name="readThrough" value="true"/>
                    <property name="cacheStoreFactory">
                        <bean class="javax.cache.configuration.FactoryBuilder$ClassFactory">
                            <constructor-arg type="java.lang.Class" value="example.ServicedCacheStore"/>

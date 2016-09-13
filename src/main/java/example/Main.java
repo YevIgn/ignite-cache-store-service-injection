@@ -21,5 +21,4 @@ public class Main {
         System.out.println(ignite.services().service(CacheStoreBackend.SERVICE_NAME) == null);
         ignite.close();
     }
-
 }
